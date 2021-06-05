@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>CodePen - &lt;Table&gt; Responsive</title>
+  <link rel="stylesheet" href="{% static 'style_jobs.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1><span class="yellow">JobHunterTM</pan></h1>
+<!-- <h2>Created with love by <a href="https://github.com/pablorgarcia" target="_blank">Pablo García</a></h2> -->
+
+  
+
+<table class="container">
+    <thead>
+      <tr>
+        <th>Tweet</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>User</th>
+        <!-- <th>Likes</th>
+        <th>Retweets</th> -->
+        <th>URLs</th>
+      </tr>
+    </thead>
+    <tbody>
+    <!-- jinja2 Technique -->
+    {% if data_key %}  
+    {% for i in data_key %}
+      <tr>
+        <td>{{i.Tweet}}</td>
+        <td>{{i.Date}}</td>
+        <td>{{i.Location}}</td>
+        <td>{{i.User}}</td>
+        <!-- <td>{{i.Likes}}</td>
+        <td>{{i.Retweet}}</td> -->
+        <td>
+        {% for j in i.URLs %}
+            <a href={{j}}>{{j}}</a>
+        {% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+  </table>
+<!-- </div> -->
+  
+</body>
+</html>
